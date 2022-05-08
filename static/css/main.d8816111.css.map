@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.d8816111.css","mappings":"AAAA,oBAAQ,SAAW,CACnB,qBAAS,UAAW,CAAqB,oBAAoB,CAAvC,eAAwC","sources":["movie.module.css"],"sourcesContent":[".title {color: red;}\r\n.genres {float: left; margin-left : 5px; list-style-type:none;}"],"names":[],"sourceRoot":""}
