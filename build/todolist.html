@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+
+ -->
+  <html>
+  <body>
+    <div id = "root">
+
+    </div>
+  </body>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+
+    function App (){
+      const [toDo, setToDo] = React.useState("");
+      const [toDos, setToDos] = React.useState([]);
+      const onChange = (event) => setToDo(event.target.value);
+      const onSubmit = (event) => {
+        event.preventDefault();
+        if (toDo === "") {
+          return;
+        }
+        setToDos((currentArray) => [toDo, ...currentArray]);
+        setToDo("");
+      };
+      React.useEffect(() => console.log(toDos),[toDos]);
+
+      return(
+        <div>
+          <h1>My To Dos ({toDos.length})</h1>
+          <form onSubmit={onSubmit}>
+            <input
+              onChange={onChange}
+              value={toDo}
+              type="text"
+              placeholder="Write your to do..."
+            />
+            <button>Add To Do</button>
+          </form>
+          <hr/>
+          <ui>
+            {toDos.map((str,index) => <li key = {index}>{str}</li>)}
+          </ui>//https://ko.reactjs.org/docs/lists-and-keys.html
+        </div>
+      );
+    }
+    const root = document.getElementById("root");
+    function render(){
+      ReactDOM.render(<App/>,root);
+    }
+    render();
+  </script>
+  </html>

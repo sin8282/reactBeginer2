@@ -1,0 +1,50 @@
+<!-- JSX의 기초에 대해서 이야기한다  -->
+<!DOCTYPE html>
+  <html>
+  <body>
+    <div id = "root">
+
+    </div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    const Title = () => ( // 에로우펑션
+      <h3 id="title"
+        onMouseEnter={() => console.log("entered!")}
+      >
+        Hello Title!!
+      </h3>
+    );
+    function Button(){ // function 형식으로 사용된다.
+      return (
+        <button
+          onClick={() => console.log("Clicked!")}
+          style={{backgroundColor:"tomato"}} // porps를 작성할때는 {}를 넣어서 작성해주는게 핵심.
+        >
+          this is btn not BTS
+        </button>
+      );
+    }
+
+    const Button2 =(
+      <button
+        onClick={() => console.log("Clicked!")}
+        style={{backgroundColor:"tomato"}} // porps를 작성할때는 {}를 넣어서 작성해주는게 핵심.
+      >
+        this is btn not BTS
+      </button>
+    );
+    const Contailner = () =>  (
+      <div>
+        <Title/>
+        <Button/>
+        <a>나는 HTML 태크형식으로 들어가짐</a>
+        {Button2}
+      </div>
+  );/*   {Button2} 변수를 가져다가 쓰는 형식도 가능하다? 하지만 변수의 사용용도가 다르므로 이런식으로는 안쓰인다.*/
+    ReactDOM.render(<Contailner/>,root); //ReactDOM.render(Contailner,root);
+  </script>
+  </html>

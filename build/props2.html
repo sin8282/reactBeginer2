@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+btn 인자로는 onClick을 사용하면 해당 버튼 props에 추가해줘야한다.*
+memo를 사용하면 전체렌더되는 React방식에서 변경되는부분만을 캐치해서 바꿔줄수있다.
+consol.log참고
+ -->
+  <html>
+  <body>
+    <div id = "root">
+
+    </div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const MemoBtn = React.memo(BtnProps);
+
+    function BtnProps({text, size, onClick}){
+      console.log(text + "was rended");
+      return (
+        <button
+          onClick = {onClick} //*
+          style={{
+            backgroundColor:"orange",
+            borderRadius:3,
+            border:0,
+            color:"white",
+            fontSize: size
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+
+    function App(){
+      const [Text,setText] = React.useState("Init");
+      const changeText = () => {
+        setText("changedBtn");
+      }
+      return (
+        <div>
+          <BtnProps text = {Text} onClick={changeText} size = {8}/>
+          <BtnProps text = "defalut" size = {8}/>
+          <MemoBtn text = {Text} onClick={changeText} size = {8}/>
+          <MemoBtn text = "defalut" size = {8}/>
+        </div>
+      )
+    }
+    const root = document.getElementById("root");
+    function render(){
+      ReactDOM.render(<App/>,root);
+    }
+    render();
+  </script>
+  </html>

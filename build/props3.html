@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+btn 인자로는 onClick을 사용하면 해당 버튼 props에 추가해줘야한다.*
+memo를 사용하면 전체렌더되는 React방식에서 변경되는부분만을 캐치해서 바꿔줄수있다.
+consol.log참고
+ -->
+  <html>
+  <body>
+    <div id = "root">
+
+    </div>
+  </body>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const MemoBtn = React.memo(BtnProps);
+
+    function BtnProps({text, fontSize = 16, onClick}){ // 초기값셋팅 해주고 = 16
+      console.log(text + "was rended");
+      return (
+        <button
+          onClick = {onClick} //*
+          style={{
+            backgroundColor:"orange",
+            borderRadius:3,
+            border:0,
+            color:"white",
+            fontSize // 폰트사이즈가 인자값이랑 같으면 :선언안해도 됨.
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+
+    function App(){
+      const [Text,setText] = React.useState("Init");
+      const changeText = () => {
+        setText("changedBtn");
+      }
+      return (
+        <div>
+          <MemoBtn text = {Text} onClick={changeText} fontSize = {54}/>
+          <MemoBtn text = "defalut" />
+        </div>
+      )
+    }
+
+    MemoBtn.propTypes = { // src React ver. develp 으로 해야 나옴
+      text: PropTypes.string.isRequired,
+      fontSize: PropTypes.number.isRequired
+    }
+
+    const root = document.getElementById("root");
+    function render(){
+      ReactDOM.render(<App/>,root);
+    }
+    render();
+  </script>
+  </html>

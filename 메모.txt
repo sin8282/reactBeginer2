@@ -1,0 +1,43 @@
+style.module.css 
+import style from "./title.module.css"
+다음과같은 형식을 이용해서 css를 따로 관리할수있다.
+예를들면 1번 module css파일과 2번 module css파일에 className이 같게(class = Container) 관리가 가능하다.
+
+React.useEffect를 이용하면 프로그램을 한번만 실행하게 할 수있다.
+React는 기본적으로 변화가 생기면 reder를 계속한다. 이건 너무 비효율적
+그래서 뭔가 한번만 실행해야하거나, 변화가 생기는 것만 바꿔줄때는 해당 매써드를 이용한다.
+
+console.log("called Again... Again..."); // 계속 reder시실행됨..
+React.useEffect(// 한번만 실행됨 예를 들면 외부자원이용시(API)
+    () => {
+        console.log("Program must be called once");
+    }, []
+);
+React.useEffect( // update가 될시 reder가 이뤄짐 keyWord
+    () => {
+        console.log("keyword searched...", keyWord);
+    }, [keyWord]// 이배열안에는 keyWord가 바뀔때만 한번 실행한다. 여러개도 가능
+);
+
+
+// 라우터이다 switch 안에는 여러개를 렌더할수도 라우터 하나만 적어서 만들 수 도 있다.
+단 route path /  >>> 홈에 대한 페이지는 무조건 뒤로가야한다. like 식으로 /경로만 들어가있으면 무조껀 일치하므로
+어떤 경로가 들어가도 Home으로 가지는 상황이 생김... 정 홈 설정을 맨위로 하고 싶다면 
+Route exact path = / 이런식으로 선언해야 완전 일치 경로로 이동한다.
+
+<Switch>
+    <Route path="/movie">
+        <Detail />
+    </Route>
+    <Route path="/">
+        <Home />
+    </Route>
+</Switch>
+
+//fetch 를 하면 response 를 가져와야함. 그리고  받은 응답값을 json값으로 바꿔주면됨.
+//fetch().then((response) => response.json).then((json) => console.log(json));
+
+
+git --version
+git remote -v
+git remote set-url origin "reactBeginer"

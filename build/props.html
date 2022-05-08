@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+function 인자 props배우기
+ -->
+  <html>
+  <body>
+    <div id = "root">
+
+    </div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function BtnProps(props){ //받는 인자는 무조건 하나이다 두개이상 올 수 없다.
+      console.log(props);
+      return (
+        <button
+          style={{ // style은 중괄호 두개열어주네?
+            backgroundColor:"orange",
+            borderRadius:3,
+            border:0,
+            color:"white",
+            fontSize: props.size,
+          }}
+        >{props.text}
+        </button>
+      );
+    }
+
+    function BtnProps2({text, size}){ //받는 인자는 하나이나 객체를 받는 것이므로 각각
+                                      //이름으로 받아오는게 가능하다.
+      console.log(text, size);
+      return (
+        <button
+          style={{ // style은 중괄호 두개열어주네?
+            backgroundColor:"orange",
+            borderRadius:3,
+            border:0,
+            color:"white",
+            fontSize: size // {}소괄호안에 들어온거이므로 따로 또 선언하는 바보짓은 ㄴㄴ
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+
+    function App(){
+      return ( // div 꼭 묶어야한다. 컴포넌트 렌더링 할 때 반환되는 루트 태그가 2개 있어서 발생했던 경우였다.
+        <div>
+          <BtnProps text = "this is a word" size = {8}/> // int value는 소괄호로 묶는다.
+          <BtnProps2 text = "this is a word" size = {50}/>
+        </div>
+      )
+    }
+    const root = document.getElementById("root");
+    function render(){
+      ReactDOM.render(<App/>,root);
+    }
+    render();
+  </script>
+  </html>
