@@ -44,4 +44,4 @@ git remote set-url origin "reactBeginer" // 해당 프로젝트를 위에 리포
 git remote add origin  "https://github.com/sin8282/reactBeginer2" // 해당 프로젝트를 위에 리포지터리에 넣기 (더알아봐야함 )
 git add "파일이름" // 커밋을 할 대상을 정한다.(--all은 옵션) 
 git commit -m "commit Test ver.2" // 커밋하고 설명을 작성한다.
-git push origin master
+git push origin master  
