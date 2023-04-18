@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import MovieComponent from "../components/movieComponent"
+import style from "../movie.module.css";
 
 function Home() {
     const [loading, setLoading] = useState(true);
@@ -28,6 +29,7 @@ function Home() {
         <div>
             {loading ? <h1>Loading.ddd...</h1> :
                 <div>
+                    <div className={style.main_top}>Welcome Movie World~</div>
                     {movies.map((value) => OnlySummaryHave(value)
                         
                     )}
@@ -45,7 +47,7 @@ function OnlySummaryHave (value) {
                 key={value.id}
                 title={value.title}
                 medium_cover_image={value.medium_cover_image}
-                summary={value.summary}
+                summary={value.summary.substring(0,100)+"..."}
                 genres={value.genres}
             />
         );

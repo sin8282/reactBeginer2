@@ -42,6 +42,7 @@ git --version // 깃버전 확인하기
 git remote -v // 현재 리모트되어있는 리포지터리 사이트 확인하기
 git remote set-url origin "reactBeginer" // 해당 프로젝트를 위에 리포지터리로 설정하기 
 git remote add origin  "https://github.com/sin8282/reactBeginer2" // 해당 프로젝트를 위에 리포지터리에 넣기 (더알아봐야함 )
-git add "파일이름" // 커밋을 할 대상을 정한다.(--all은 옵션) 
-git commit -m "commit Test ver.2" // 커밋하고 설명을 작성한다.
+git add "파일이름" // 커밋을 할 대상을 정한다.stage area에 먼저 넣어서 대기상태를 만든다.(--all은 옵션) 
+git status // add 한 파일을 확인가능하다 stage area를 확인가능하다.
+git commit -m "commit Test ver.2" // 커밋하고 설명을 작성한다. -m은 현재 add로 commit 대기 상태에 있는 자료만 넣는 의미이다 -a는 전부
 git push origin master  

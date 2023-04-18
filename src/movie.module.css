@@ -1,2 +1,39 @@
-.title {color: red;}
-.genres {float: left; margin-left : 5px; list-style-type:none;}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+body {
+    text-align: center;
+}
+.title {
+    color: red;
+}
+.genres {
+    float: left; margin-left : 5px; list-style-type:none;
+}
+.main_top {
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    text-align: center;
+}
+.main {
+    width:250px;
+    position: relative;
+    display:inline-block
+}
+.main img {
+    width:100%;
+    border-radius: 25px;
+}
+.main .main_story {
+    position: absolute;
+    color: #fff;
+    top: 0;
+    left: 0;
+    border-radius: 25px;
+    background: rgba(0,0,0,0.5);
+    padding: 15px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.35s ease-in-out;
+    z-index: 1;
+}
+.main:hover .main_story{opacity:1;}
